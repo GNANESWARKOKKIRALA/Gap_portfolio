@@ -178,56 +178,6 @@ export default function Hero() {
             <div className="absolute -top-2 -left-2 w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_8px_#6366f1] animate-pulse" />
             <div className="absolute -bottom-2 -right-2 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4] animate-pulse" style={{ animationDelay: "1s" }} />
           </motion.div>
-
-          {/* Core Skills & Graduate Profile Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full max-w-sm glass-panel rounded-2xl p-5 border border-white/5 relative overflow-hidden"
-          >
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
-            <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-4">
-              <span className="font-display text-[10px] text-slate-400 tracking-wider uppercase font-semibold">Core Developer Stack</span>
-              <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                <span className="font-display text-[9px] text-indigo-400 font-semibold tracking-wider uppercase">2026 Graduate</span>
-              </span>
-            </div>
-
-            <div className="space-y-4 font-sans text-xs">
-              
-              <div className="space-y-1.5">
-                <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider">Skills Overview</span>
-                <div className="flex flex-wrap gap-1.5">
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white font-medium text-[11px]">Python Core</span>
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-indigo-300 font-medium text-[11px]">Generative AI</span>
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-cyan-300 font-medium text-[11px]">RAG Pipelines</span>
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white font-medium text-[11px]">SQL Server</span>
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-purple-300 font-medium text-[11px]">ChromaDB</span>
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white font-medium text-[11px]">Flask & Streamlit</span>
-                  <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-slate-300 text-[11px]">Machine Learning</span>
-                </div>
-              </div>
-
-              <div className="border-t border-white/5 pt-3 space-y-1 text-[11px] text-slate-400 leading-normal">
-                <div className="flex justify-between">
-                  <span>Current Status:</span>
-                  <span className="text-indigo-400 font-semibold">Open to Opportunities</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Graduation Year:</span>
-                  <span className="text-slate-200">2026 (Graduated)</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Location Node:</span>
-                  <span className="text-slate-200">{portfolioData.location.split(",")[0]}, IN</span>
-                </div>
-              </div>
-
-            </div>
-          </motion.div>
-
         </div>
 
       </div>

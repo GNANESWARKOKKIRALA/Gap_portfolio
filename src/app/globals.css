@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030307;
+  --background: #020204;
   --foreground: #f8fafc;
   --primary-glow: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 100%);
   --secondary-glow: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.05) 60%, transparent 100%);
@@ -19,44 +19,29 @@
   --color-glass-border-hover: rgba(99, 102, 241, 0.25);
   --color-glass-highlight: rgba(99, 102, 241, 0.15);
   
-  --animate-float-slow: float-slow 8s ease-in-out infinite;
-  --animate-float-medium: float-medium 6s ease-in-out infinite;
-  --animate-glow-pulse: glow-pulse 6s ease-in-out infinite;
-  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-scanline: scanline 8s linear infinite;
+  --animate-float-slow: float-slow 12s ease-in-out infinite alternate;
+  --animate-pulse-slow: pulse-slow 8s ease-in-out infinite;
 
   @keyframes float-slow {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-15px) scale(1.02); }
-  }
-  @keyframes float-medium {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.15)); }
-    50% { opacity: 0.6; filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.35)); }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
   }
   @keyframes pulse-slow {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.5; }
-  }
-  @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.45; }
   }
 }
 
 /* Base custom resets */
 html {
   scroll-behavior: smooth;
-  background-color: var(--background);
+  background-color: #020204; /* Solid cosmic backdrop at the absolute bottom */
   color: var(--foreground);
   overflow-x: hidden;
 }
 
 body {
-  background-color: var(--background);
+  background-color: transparent !important; /* Transparent body so canvas and mesh gradients show through */
   color: var(--foreground);
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -66,23 +51,21 @@ body {
 
 /* Custom Scrollbar for Luxury Aesthetic */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030307;
+  background: #020204;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  border: 2px solid #030307;
-  transition: all 0.3s ease;
+  background: rgba(99, 102, 241, 0.25);
+  border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.45);
 }
 
 /* Selection highlight */
@@ -91,12 +74,62 @@ body {
   color: #ffffff;
 }
 
-/* Glassmorphism Classes with Gradient Borders */
+/* Stripe-style Flowing Mesh Gradients Backdrop */
+.mesh-gradient-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2; /* Behind the galaxy stars (-1) */
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.mesh-bubble {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px); /* Defined and sharp space cloud shapes */
+  opacity: 0.85; /* Highly visible, saturated cosmic dust fields */
+  animation: float-slow 16s ease-in-out infinite alternate;
+}
+
+.mesh-bubble-1 {
+  top: -10%;
+  right: 5%;
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.65) 0%, rgba(29, 78, 216, 0) 70%); /* Saturated Royal Blue */
+  animation-duration: 22s;
+}
+
+.mesh-bubble-2 {
+  bottom: 10%;
+  left: 10%;
+  width: 380px; /* Small amount of Red */
+  height: 380px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.4) 0%, rgba(220, 38, 38, 0) 70%); /* Saturated Crimson Red */
+  animation-duration: 28s;
+  animation-delay: -5s;
+}
+
+.mesh-bubble-3 {
+  top: 40%;
+  right: -10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0) 70%); /* Saturated Emerald Green */
+  animation-duration: 24s;
+  animation-delay: -10s;
+}
+
+/* Glassmorphism Panels with Thick, Visible Gradient Borders */
 .glass-panel {
   background: 
     linear-gradient(rgba(6, 6, 14, 0.75), rgba(6, 6, 14, 0.75)) padding-box,
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(99, 102, 241, 0.15) 100%) border-box !important;
-  border: 1px solid transparent !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(99, 102, 241, 0.45) 100%) border-box !important;
+  border: 2.5px solid transparent !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
@@ -106,16 +139,16 @@ body {
 .glass-panel:hover {
   background: 
     linear-gradient(rgba(10, 10, 24, 0.85), rgba(10, 10, 24, 0.85)) padding-box,
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(99, 102, 241, 0.25) 50%, rgba(6, 182, 212, 0.35) 100%) border-box !important;
-  box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.12);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(99, 102, 241, 0.55) 50%, rgba(6, 182, 212, 0.65) 100%) border-box !important;
+  box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.22);
   transform: translateY(-2px);
 }
 
 .glass-nav {
   background: 
     linear-gradient(rgba(4, 4, 10, 0.8), rgba(4, 4, 10, 0.8)) padding-box,
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(99, 102, 241, 0.15) 100%) border-box !important;
-  border: 1px solid transparent !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(99, 102, 241, 0.35) 100%) border-box !important;
+  border: 2.5px solid transparent !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -130,31 +163,12 @@ body {
   text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
 }
 
-.glow-border {
-  position: relative;
-}
-
-.glow-border::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(90deg, #6366f1, #a855f7, #06b6d4);
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.glow-border:hover::after {
-  opacity: 0.5;
-}
-
 /* Custom background grid overlay */
 .bg-grid-overlay {
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 50px 50px;
   background-position: center center;
 }
 
@@ -168,4 +182,60 @@ body {
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Animated Robot Keyframe Animations */
+.animate-robot-bob {
+  animation: robot-bob 6s ease-in-out infinite;
+}
+
+.animate-robot-sway {
+  animation: robot-sway 4s ease-in-out infinite alternate;
+}
+
+.animate-robot-wave {
+  animation: robot-wave 2.2s ease-in-out infinite;
+}
+
+.animate-robot-blink {
+  animation: robot-blink 5s ease-in-out infinite;
+}
+
+.animate-robot-bubble {
+  animation: robot-bubble 7s ease-in-out infinite;
+}
+
+.animate-robot-thruster {
+  animation: robot-thruster 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes robot-bob {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes robot-sway {
+  0% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+@keyframes robot-wave {
+  0%, 100% { transform: rotate(0deg); }
+  35%, 65% { transform: rotate(-18deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes robot-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.08); }
+}
+
+@keyframes robot-bubble {
+  0%, 100% { transform: scale(1) translateY(0px); opacity: 0.95; }
+  50% { transform: scale(1.05) translateY(-2px); opacity: 1; }
+}
+
+@keyframes robot-thruster {
+  0% { transform: scaleY(0.9); opacity: 0.7; }
+  100% { transform: scaleY(1.15); opacity: 0.95; }
 }

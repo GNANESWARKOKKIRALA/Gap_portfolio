@@ -42,6 +42,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative text-slate-200">
+      {/* Stripe-style Flowing Mesh Backdrop */}
+      <div className="mesh-gradient-container">
+        <div className="mesh-bubble mesh-bubble-1" />
+        <div className="mesh-bubble mesh-bubble-2" />
+        <div className="mesh-bubble mesh-bubble-3" />
+      </div>
+
       {/* Interactive canvas background */}
       <CanvasBackground />
 
